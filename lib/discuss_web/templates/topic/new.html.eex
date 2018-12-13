@@ -1,0 +1,38 @@
+<div class="col s3"></div>
+<section class="phx-hero col s6">
+<%= form_for @changeset, Routes.topic_path(@conn, :create), [multipart: true], fn f -> %>
+      <!-- <div class="row"> -->
+        <div class="input-field">
+          <%= text_input f, :title  ,required: "", class: "validate" , id: "title" %>
+<!--          <%= error_tag f, :title  %>  -->
+          <label for="title">Name Scene</label>
+          <span class="helper-text" data-error="This line must be filled" data-success="right">Please input names scene</span>
+        </div>
+        <!-- <div class="col s6"></div> -->
+      <!-- </div> -->
+
+
+      <!-- <div class="row"> -->
+         <div class="input-field"> <!-- col s12 -->
+          <%= textarea f, :discription  ,required: "", class: "materialize-textarea" , id: "text_scene" %>
+          <!-- <textarea id="text_scene" class="materialize-textarea"></textarea> -->
+          <label for="text_scene">Discription scene</label>
+        </div>
+      <!-- </div> -->
+      <div class=”form-group”>
+        <div class="file-field input-field">
+          <div class="btn">
+            <span>File</span>
+            <%= file_input f, :photo, required: "",class: "form-control" %> <!--  multiple -->
+          </div>
+          <div class="file-path-wrapper">
+            <input class="file-path validate" type="text" placeholder="Upload one or more files">
+          </div>
+        </div>
+      </div>
+      <div class=”form-group”>
+          <%= submit "Submit" , class: "btn waves-effect waves-light" %>
+      </div>
+<% end %>
+</section>
+<div class="col s3"></div>

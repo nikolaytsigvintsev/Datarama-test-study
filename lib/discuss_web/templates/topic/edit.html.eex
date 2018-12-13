@@ -1,0 +1,24 @@
+<div class="col s3"></div>
+<section class="phx-hero col s6">
+<%= form_for @changeset, Routes.topic_path( @conn , :update, @topic ) , fn f -> %>
+      <div class="row">
+        <div class="input-field col s6">
+          <%= text_input f, :title  ,required: "", class: "validate" , id: "title" %>
+          <label for="title">Name Scene</label>
+          <span class="helper-text" data-error="This line must be filled" data-success="right">Please input names scene</span>
+        </div>
+        <div class="col s6"></div>
+      </div>
+
+
+      <div class="row">
+        <div class="input-field col s12">
+          <%= textarea f, :discription  ,required: "", class: "materialize-textarea" , id: "text_scene" %>
+          <label for="text_scene">Discription scene</label>
+        </div>
+      </div>
+
+      <%= submit "Save Scene" , class: "btn waves-effect waves-light" %>
+<% end %>
+</section>
+<div class="col s3"></div>

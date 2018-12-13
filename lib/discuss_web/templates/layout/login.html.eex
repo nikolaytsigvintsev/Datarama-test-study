@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Discuss · Phoenix Framework</title>
+
+     <link rel="stylesheet" href="<%= Routes.static_path(@conn, "/css/app.css") %>"/>
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- 1. Add CSS to `<head>` -->
+    <!-- <link href="https://transloadit.edgly.net/releases/uppy/v0.28.0/dist/uppy.min.css" rel="stylesheet"> -->
+    <!-- 2. Add JS before the closing `</body>` -->
+    <!-- <script src="https://transloadit.edgly.net/releases/uppy/v0.28.0/dist/uppy.min.js"></script> -->
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+		<style>
+		body {
+   				background-image: url("images/datarama_inside_view.jpg");
+   				background-color: #cccccc;
+				}
+			.container{
+				width:40%;
+				font-size: 14px;
+				padding-top: 100px;
+		}
+		</style>
+
+  </head>
+  <body>
+		<div class="row">
+		 <div class="col s12">
+			 <main role="main">
+				 <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
+				 <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
+			 </main>
+		 </div>
+	 </div>
+
+		<div class="container">
+			<section class="phx-hero col s6 z-depth-5">
+			<%= form_tag @callback_url, method: "post", class: "login" do %>
+						<div class="input-field col s12">
+							<input id="email" type="email" name="email" class="validate" required="" value="<%= @conn.params["email"] %>">
+							<span class="helper-text" data-error="This line must be filled" data-success="right">Please input your email</span>
+							<label for="email">Email</label>
+						</div>
+						<div class="row">
+						 <div class="input-field col s12">
+							 <input id="password" type="password" class="validate" name="password" required="" >
+							 <span class="helper-text" data-error="This line must be filled" data-success="right">Please input your password</span>
+							 <label for="password">Password</label>
+						 </div>
+					 </div>
+					 <div class=”form-group”>
+		           <%= submit "Login" , class: "btn waves-effect waves-light" %>
+								<a  href="/" class="waves-effect waves-light btn">Cancel</a>
+					  </div>
+			<% end %>
+			</section>
+		</div>
+
+   <!-- <script type="text/javascript" src="<%= Routes.static_path(@conn, "/js/app.js") %>"></script> -->
+</body>
+</html>

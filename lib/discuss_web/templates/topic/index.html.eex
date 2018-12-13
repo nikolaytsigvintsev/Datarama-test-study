@@ -1,0 +1,43 @@
+<section class="phx-hero">
+<div class="row">
+  <div class="col s12">
+    
+<ul class="collapsible popout">
+  <%= for topic <- @topics do %>
+  <%= if @conn.assigns.users.id == topic.users_id do %>
+  <li>
+    <div class="collapsible-header">
+      <div class="row">
+        <div class="col s12 left-align"><i class="material-icons">filter_drama</i><%= topic.title %></div>
+        <div class="col s1"><%= link "Show" ,class: "waves-effect waves-light btn ",to: Routes.topic_path( @conn,:show, topic ) %> </div>
+        <div class="col s1"><%= link "Edit" ,class: "waves-effect waves-light btn ",to: Routes.topic_path( @conn,:edit, topic ) %> </div>
+        <div class="col s1"><%= link "Delete" ,class: "waves-effect waves-light btn red lighten-1",to: Routes.topic_path( @conn,:delete, topic ) , method: :delete  %></div>
+      </div>
+    </div>
+     <div class="collapsible-body"><%= topic.discription %></div>
+     <div class="collapsible-body">
+            <%= img_tag( topic.pathfile  ,width: "2000",class: "materialboxed")  %>
+      </div>
+   </li>
+    <% end %>
+   <% end %>
+</ul>
+
+  <div class="row">
+     <div class="col s12">
+       <%= link to: Routes.topic_path( @conn , :new ) , class: "waves-effect waves-light btn-large" do %>Add scene<% end %>
+        <!-- <a href="/topics/new" class="waves-effect waves-light btn-large">Add scene</a> -->
+     </div>
+  </div>
+ </div>
+</div>
+</section>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  var elems = document.querySelectorAll('.collapsible');
+  var instances = M.Collapsible.init(elems, 'accordion');
+
+   elems = document.querySelectorAll('.materialboxed');
+   instances = M.Materialbox.init(elems, 'inDuration');
+});
+</script>

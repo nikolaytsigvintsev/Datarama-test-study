@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Discuss · Phoenix Framework</title>
+
+     <link rel="stylesheet" href="<%= Routes.static_path(@conn, "/css/app.css") %>"/>
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- 1. Add CSS to `<head>` -->
+    <!-- <link href="https://transloadit.edgly.net/releases/uppy/v0.28.0/dist/uppy.min.css" rel="stylesheet"> -->
+    <!-- 2. Add JS before the closing `</body>` -->
+    <!-- <script src="https://transloadit.edgly.net/releases/uppy/v0.28.0/dist/uppy.min.js"></script> -->
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+  </head>
+  <body>
+        <nav>
+            <div class="nav-wrapper">
+              <ul class="right hide-on-med-and-down">
+                <%= if @conn.assigns[:users] do %>
+                   <%= link "Log out", to: Routes.auth_path( @conn ,:signout ) %>
+                <% else %>
+                   <%= link "Sign in with Github", to: Routes.auth_path( @conn ,:request ,"github") %>
+                <% end %>
+              </ul>
+              <ul id="nav-mobile" class="left hide-on-med-and-down">
+                <li><a href="/admin">Users</a></li>
+                <li><a href="/topics">Scenes</a></li>
+                <li><a href="">Media</a></li>
+              </ul>
+            </div>
+          </nav>
+          <div class="row">
+           <div class="col s12">
+             <main role="main">
+               <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
+               <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
+             </main>
+           </div>
+      </div>
+          <!-- Page Layout here -->
+           <div class="row">
+            <div class="col s12">
+             <%= render @view_module, @view_template, assigns %>
+           </div>
+           </div>
+           <script>
+           <%= if @conn.assigns.users do %>
+             window.userToken = "<%= @conn.assigns.users.token %>"   //'<%= Phoenix.Token.sign( DiscussWeb.Endpoint, "user salt", @conn.assigns.users.id) %>'
+           <% end %>
+           </script>
+          <script type="text/javascript" src="<%= Routes.static_path(@conn, "/js/app.js") %>"></script>
+</body>
+</html>

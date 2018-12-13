@@ -1,0 +1,43 @@
+<style>
+.container{
+  width:100%;
+  font-size: 14px;
+}
+td, th {
+    padding: 5px 10px;
+}
+
+</style>
+<div class="container">
+   <div class="col s12">
+        <table class="striped highlight responsive-table centered">
+             <thead>
+               <tr>
+                   <th>Name</th>
+                   <th>Email</th>
+                   <th>Provider</th>
+                   <!-- <th>Token</th> -->
+                   <th width='25%'></th>
+               </tr>
+             </thead>
+
+             <tbody>
+              <%= for user <- @listuser do %>
+               <tr>
+                 <td><%= user.name %></td>
+                 <td><%= user.email %></td>
+                 <td><%= user.provider %></td>
+                 <!-- <td><%= user.token %></td> -->
+                 <td>
+                   <%= link "Show" ,class: "waves-effect waves-light btn ",to: "" %>
+                   <%= link "Edit" ,class: "waves-effect waves-light btn ",to: Routes.admin_path( @conn,:edit, user ) %>
+                   <%= link "Delete" ,class: "waves-effect waves-light btn red lighten-1",to: Routes.admin_path( @conn,:delete, user )  , method: :delete  %>
+                </td>
+
+               </tr>
+              <% end %>
+             </tbody>
+        </table>
+    </div>
+    <a href="/admin/new" class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">add</i></a>
+</div>

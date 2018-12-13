@@ -1,0 +1,64 @@
+<div class="row">
+  <div class="col s12">
+    <!-- Dropdown Structure -->
+  <!-- <ul id="dropdown1" class="dropdown-content">
+    <li class="divider"></li>
+    <li><a href="/login">Local</a></li>
+    <li class="divider"></li>
+    <li><a href="/auth/github">GitHub</a></li>
+    <li class="divider"></li>
+  </ul> -->
+  <nav>
+    <div class="nav-wrapper">
+      <a href="#!" class="brand-logo">DATARAMA</a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><a href="/login">SIGN IN</a></li>
+        <!-- Dropdown Trigger -->
+        <!-- <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">SIGN IN<i class="material-icons right">arrow_drop_down</i></a></li> -->
+      </ul>
+    </div>
+  </nav>
+  </div>
+</div>
+<div class="row">
+  <div class="col s12">
+  <div class="slider">
+      <ul class="slides">
+        <li>
+          <img src="images/datarama_inside_view.jpg"> <!-- random image -->
+          <div class="caption center-align">
+            <h3>This is our big Tagline!</h3>
+            <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
+          </div>
+        </li>
+        <li>
+          <img src="images/datarama_inside_view.jpg"> <!-- random image -->
+          <div class="caption left-align">
+            <h3>Left Aligned Caption</h3>
+            <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
+          </div>
+        </li>
+        <li>
+          <img src="images/datarama_inside_view.jpg"> <!-- random image -->
+          <div class="caption right-align">
+            <h3>Right Aligned Caption</h3>
+            <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
+          </div>
+        </li>
+        <li>
+          <img src="images/datarama_inside_view.jpg"> <!-- random image -->
+          <div class="caption center-align">
+            <h3>This is our big Tagline!</h3>
+            <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
+          </div>
+        </li>
+      </ul>
+    </div>
+    </div>
+  </div>
+  <script>
+  document.addEventListener('DOMContentLoaded', function() {
+      M.Slider.init(document.querySelectorAll('.slider'), {'height': 900, 'indicators' : false});
+      M.Dropdown.init(document.querySelectorAll('.dropdown-trigger'), null);
+    });
+  </script>

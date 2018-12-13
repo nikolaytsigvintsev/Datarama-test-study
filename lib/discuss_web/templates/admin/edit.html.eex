@@ -1,0 +1,20 @@
+<div class="col s3"></div>
+<section class="phx-hero col s6">
+<%= form_for @changeset, Routes.admin_path( @conn , :update, @user ) , fn f -> %>
+        <div class="input-field">
+          <%= text_input f, :name  ,required: "", class: "validate" , id: "name" %>
+          <label for="name">Name user</label>
+          <span class="helper-text" data-error="This line must be filled" data-success="right">Please input name users</span>
+        </div>
+        <div class="input-field">
+          <%= email_input f, :email  ,required: "", class: "validate" , id: "email" %>
+          <label for="email">Email user</label>
+        </div>
+        <!-- <div class="input-field col s12">
+          <%= password_input f, :password  ,required: "", class: "validate" , id: "password" %>
+          <label for="password">Password</label>
+        </div> -->
+          <%= submit "Save Scene" , class: "btn waves-effect waves-light" %>
+<% end %>
+</section>
+<div class="col s3"></div>
